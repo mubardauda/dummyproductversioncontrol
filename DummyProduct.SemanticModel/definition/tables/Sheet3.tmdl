@@ -1,0 +1,129 @@
+table Sheet3
+	lineageTag: c84d5000-3025-4a55-a3d3-57f4a3bd7da4
+
+	column ProductID
+		dataType: string
+		lineageTag: bece0d06-d7ef-41ca-aa0d-727e3e33e6f4
+		summarizeBy: none
+		sourceColumn: ProductID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Product Name'
+		dataType: string
+		lineageTag: 7fc18549-ca4c-4faa-8154-988c8980e573
+		summarizeBy: none
+		sourceColumn: Product Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Category
+		dataType: string
+		lineageTag: ea522caa-14f5-46e9-86fc-47528d844a96
+		summarizeBy: none
+		sourceColumn: Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column UnitPrice
+		dataType: double
+		lineageTag: 7773af55-0d78-41b8-8a44-f103206c9a91
+		summarizeBy: sum
+		sourceColumn: UnitPrice
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column UnitCost
+		dataType: double
+		lineageTag: 4518e852-fc6e-4d4b-870b-971f9254c34a
+		summarizeBy: sum
+		sourceColumn: UnitCost
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column StockQuantity
+		dataType: int64
+		formatString: 0
+		lineageTag: cd44db97-bf10-4b71-aa22-450b1145b390
+		summarizeBy: sum
+		sourceColumn: StockQuantity
+
+		annotation SummarizationSetBy = Automatic
+
+	column ReorderLevel
+		dataType: int64
+		formatString: 0
+		lineageTag: 914697b6-c86f-40bd-8ffd-84f78b44110e
+		summarizeBy: sum
+		sourceColumn: ReorderLevel
+
+		annotation SummarizationSetBy = Automatic
+
+	column LeadTime
+		dataType: int64
+		formatString: 0
+		lineageTag: 00252f9b-3ef2-429e-bbe5-e1b1e154bcd1
+		summarizeBy: sum
+		sourceColumn: LeadTime
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsActive
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 98e6bd01-4e57-4efc-8822-3b81eadef1d6
+		summarizeBy: none
+		sourceColumn: IsActive
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Inventory Turnover'
+		dataType: int64
+		formatString: 0
+		lineageTag: 2273c85e-ef28-48f7-ba78-c4b3ded074e3
+		summarizeBy: sum
+		sourceColumn: Inventory Turnover
+
+		annotation SummarizationSetBy = Automatic
+
+	column Stockout
+		dataType: string
+		lineageTag: 8c328a1c-edb8-405b-bb62-21544051cf16
+		summarizeBy: none
+		sourceColumn: Stockout
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Product Image'
+		dataType: string
+		lineageTag: 45b3fe9e-cb5f-440f-9287-906c21628465
+		summarizeBy: none
+		sourceColumn: Product Image
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Product Image SVG'
+		dataType: string
+		lineageTag: fb45ce76-055e-4a26-acae-bef7ed510868
+		summarizeBy: none
+		sourceColumn: Product Image SVG
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Sheet3 = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Users\Thinkpad\OneDrive - KasMub Digital Services\My Backup Files\My Power BI Projects\Product.xlsx"), null, true),
+				    Sheet3_Sheet = Source{[Item="Sheet3",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(Sheet3_Sheet, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"ProductID", type text}, {"Product Name", type text}, {"Category", type text}, {"UnitPrice", type number}, {"UnitCost", type number}, {"StockQuantity", Int64.Type}, {"ReorderLevel", Int64.Type}, {"LeadTime", Int64.Type}, {"IsActive", type logical}, {"Inventory Turnover", Int64.Type}, {"Stockout", type text}, {"Product Image", type text}, {"Product Image SVG", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+
