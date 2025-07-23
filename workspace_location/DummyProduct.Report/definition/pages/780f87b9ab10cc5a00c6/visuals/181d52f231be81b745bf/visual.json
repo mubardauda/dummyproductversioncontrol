@@ -1,37 +1,18 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.1.0/schema.json",
-  "name": "ad4a637baf601a3cd1b4",
+  "name": "181d52f231be81b745bf",
   "position": {
-    "x": 820.38190613595862,
-    "y": 79.9524739030807,
-    "z": 2,
-    "height": 275.77809839033637,
-    "width": 359.20676681094233,
-    "tabOrder": 2
+    "x": 443,
+    "y": 370,
+    "z": 3,
+    "height": 280,
+    "width": 359,
+    "tabOrder": 3
   },
   "visual": {
-    "visualType": "treemap",
+    "visualType": "card",
     "query": {
       "queryState": {
-        "Group": {
-          "projections": [
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Sheet3"
-                    }
-                  },
-                  "Property": "Product Name"
-                }
-              },
-              "queryRef": "Sheet3.Product Name",
-              "nativeQueryRef": "Product Name",
-              "active": true
-            }
-          ]
-        },
         "Values": {
           "projections": [
             {
@@ -44,15 +25,14 @@
                           "Entity": "Sheet3"
                         }
                       },
-                      "Property": "UnitPrice"
+                      "Property": "ReorderLevel"
                     }
                   },
                   "Function": 0
                 }
               },
-              "queryRef": "Sum(Sheet3.UnitPrice)",
-              "nativeQueryRef": "Total Price",
-              "displayName": "Total Price"
+              "queryRef": "Sum(Sheet3.ReorderLevel)",
+              "nativeQueryRef": "Sum of ReorderLevel"
             }
           ]
         }
@@ -69,7 +49,7 @@
                         "Entity": "Sheet3"
                       }
                     },
-                    "Property": "UnitPrice"
+                    "Property": "ReorderLevel"
                   }
                 },
                 "Function": 0
@@ -86,21 +66,7 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "c27edff8c7865fbbf89c",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Sheet3"
-              }
-            },
-            "Property": "Product Name"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "03d28515fbb7f41540b4",
+        "name": "33677b2a4ab72b680e45",
         "field": {
           "Aggregation": {
             "Expression": {
@@ -110,7 +76,7 @@
                     "Entity": "Sheet3"
                   }
                 },
-                "Property": "UnitPrice"
+                "Property": "ReorderLevel"
               }
             },
             "Function": 0
