@@ -1,0 +1,123 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.1.0/schema.json",
+  "name": "f64846af7d2a4f4a1233",
+  "position": {
+    "x": 442.63543523154829,
+    "y": 84.5873999264477,
+    "z": 1,
+    "height": 275.77809839033637,
+    "width": 359.20676681094233,
+    "tabOrder": 1
+  },
+  "visual": {
+    "visualType": "barChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Sheet3"
+                    }
+                  },
+                  "Property": "Product Name"
+                }
+              },
+              "queryRef": "Sheet3.Product Name",
+              "nativeQueryRef": "Product Name",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Sheet3"
+                        }
+                      },
+                      "Property": "UnitPrice"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(Sheet3.UnitPrice)",
+              "nativeQueryRef": "Total Price",
+              "displayName": "Total Price"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Aggregation": {
+                "Expression": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "Sheet3"
+                      }
+                    },
+                    "Property": "UnitPrice"
+                  }
+                },
+                "Function": 0
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "8f2b9af321ab230dc699",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Sheet3"
+              }
+            },
+            "Property": "Product Name"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "1a963005f95a0094f60c",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Sheet3"
+                  }
+                },
+                "Property": "UnitPrice"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}
